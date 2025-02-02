@@ -7,6 +7,7 @@
 [![Go Version](https://img.shields.io/github/go-mod/go-version/AriajSarkar/ariaj)](https://golang.org/)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Release](https://img.shields.io/github/v/release/AriajSarkar/ariaj)](https://github.com/AriajSarkar/ariaj/releases/latest)
+[![Release](https://github.com/AriajSarkar/ariaj/actions/workflows/release.yml/badge.svg)](https://github.com/AriajSarkar/ariaj/actions/workflows/release.yml)
 
 *A powerful CLI tool for interacting with Large Language Models through Ollama*
 
