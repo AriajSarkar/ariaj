@@ -1,0 +1,64 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  goreleaser:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Fix tag
+        run: |
+          git config --global user.name 'GitHub Actions'
+          git config --global user.email 'actions@github.com'
+          
+          # Get current commit and tag info
+          CURRENT_COMMIT=$(git rev-parse HEAD)
+          TAG_NAME=${GITHUB_REF#refs/tags/}
+          
+          # Delete and recreate tag on current commit
+          git tag -d $TAG_NAME
+          git push --delete origin $TAG_NAME || true
+          git tag -a $TAG_NAME $CURRENT_COMMIT -m "Release $TAG_NAME"
+          git push origin $TAG_NAME
+
+      - uses: actions/setup-go@v4
+        with:
+          go-version: '1.21'
+
+      - name: Build and Test
+        shell: bash
+        run: |
+          mkdir -p tmp
+          # Build for testing
+          go build -o tmp/ariaj
+          # Make executable
+          chmod +x ./tmp/ariaj
+          # Test help command
+          ./tmp/ariaj --help > tmp/output.txt
+          # Platform-independent checks
+          if cat tmp/output.txt | awk '/install.*Install ariaj CLI globally/ { found=1; exit } END { exit !found }'; then
+            echo "Help command test passed"
+          else
+            echo "Help command test failed"
+            cat tmp/output.txt
+            exit 1
+          fi
+
+      - name: Run GoReleaser
+        uses: goreleaser/goreleaser-action@v5
+        with:
+          distribution: goreleaser
+          version: latest
+          args: release --clean
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
