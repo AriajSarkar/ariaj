@@ -41,12 +41,12 @@ Choose the appropriate version for your system:
 
 | Platform | Architecture | Download |
 |----------|-------------|----------|
-| Windows | x64 | [Download](https://github.com/AriajSarkar/ariaj/releases/download/v0.1.0/ariaj_0.1.0_Windows_x86_64.zip) |
-| Windows | ARM64 | [Download](https://github.com/AriajSarkar/ariaj/releases/download/v0.1.0/ariaj_0.1.0_Windows_arm64.zip) |
-| Linux | x64 | [Download](https://github.com/AriajSarkar/ariaj/releases/download/v0.1.0/ariaj_0.1.0_Linux_x86_64.tar.gz) |
-| Linux | ARM64 | [Download](https://github.com/AriajSarkar/ariaj/releases/download/v0.1.0/ariaj_0.1.0_Linux_arm64.tar.gz) |
-| macOS | x64 | [Download](https://github.com/AriajSarkar/ariaj/releases/download/v0.1.0/ariaj_0.1.0_Darwin_x86_64.tar.gz) |
-| macOS | ARM64 | [Download](https://github.com/AriajSarkar/ariaj/releases/download/v0.1.0/ariaj_0.1.0_Darwin_arm64.tar.gz) |
+| Windows | x64 | [Download](https://github.com/AriajSarkar/ariaj/releases/download/v0.1.4/ariaj_0.1.4_Windows_x86_64.zip) |
+| Windows | ARM64 | [Download](https://github.com/AriajSarkar/ariaj/releases/download/v0.1.4/ariaj_0.1.4_Windows_arm64.zip) |
+| Linux | x64 | [Download](https://github.com/AriajSarkar/ariaj/releases/download/v0.1.4/ariaj_0.1.4_Linux_x86_64.tar.gz) |
+| Linux | ARM64 | [Download](https://github.com/AriajSarkar/ariaj/releases/download/v0.1.4/ariaj_0.1.4_Linux_arm64.tar.gz) |
+| macOS | x64 | [Download](https://github.com/AriajSarkar/ariaj/releases/download/v0.1.4/ariaj_0.1.4_Darwin_x86_64.tar.gz) |
+| macOS | ARM64 | [Download](https://github.com/AriajSarkar/ariaj/releases/download/v0.1.4/ariaj_0.1.4_Darwin_arm64.tar.gz) |
 
 [View all releases](https://github.com/AriajSarkar/ariaj/releases)
 
