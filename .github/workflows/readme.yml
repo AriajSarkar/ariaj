@@ -46,4 +46,4 @@ jobs:
           commit-message: "docs: update download links for version ${GITHUB_REF#refs/tags/}"
           title: "docs: update download links for latest release"
           body: "Auto-generated PR to update download links in README.md for the latest release"
-          branch: "update-readme"
+          branch: "auto-readme"
