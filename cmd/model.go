@@ -1,8 +1,8 @@
 package cmd
 
 import (
-    "ariaj/internal/config"
-    "ariaj/internal/llm"
+    "github.com/AriajSarkar/ariaj/internal/config"
+    "github.com/AriajSarkar/ariaj/internal/llm"
     "fmt"
     "github.com/manifoldco/promptui"
     "github.com/spf13/cobra"

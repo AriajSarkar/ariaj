@@ -1,10 +1,10 @@
 package cmd
 
 import (
-    "ariaj/internal/commands"
-    "ariaj/internal/config"
-    "ariaj/internal/llm"
-    "ariaj/internal/utils"
+    "github.com/AriajSarkar/ariaj/internal/commands"
+    "github.com/AriajSarkar/ariaj/internal/config"
+    "github.com/AriajSarkar/ariaj/internal/llm"
+    "github.com/AriajSarkar/ariaj/internal/utils"
     "bufio"
     "fmt"
     "os"

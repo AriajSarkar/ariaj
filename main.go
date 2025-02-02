@@ -1,7 +1,7 @@
 package main
 
 import (
-    "ariaj/cmd"
+    "github.com/AriajSarkar/ariaj/cmd"
     "os"
 )
 

@@ -1,7 +1,7 @@
 package commands
 
 import (
-    "ariaj/internal/utils"
+    "github.com/AriajSarkar/ariaj/internal/utils"
     "github.com/spf13/cobra"
 )
 

@@ -1,8 +1,8 @@
 package llm
 
 import (
-	"ariaj/internal/config"
-	"ariaj/internal/utils"
+	"github.com/AriajSarkar/ariaj/internal/config"
+	"github.com/AriajSarkar/ariaj/internal/utils"
 	"bytes"
 	"context"
 	"encoding/json"

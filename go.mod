@@ -1,4 +1,4 @@
-module ariaj
+module github.com/AriajSarkar/ariaj
 
 go 1.21
 
