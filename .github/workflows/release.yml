@@ -62,3 +62,26 @@ jobs:
           args: release --clean
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  update-readme:
+    needs: goreleaser
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Update README.md
+        run: |
+          VERSION=${GITHUB_REF#refs/tags/}
+          VERSION=${VERSION#v}
+          echo "Updating README.md for version ${VERSION}"
+          sed -i "/### Download Binary/,/### Manual Installation/c\### Download Binary\n\nChoose the appropriate version for your system:\n\n| Platform | Architecture | Download |\n|----------|-------------|----------|\n| Windows | x64 | [Download](https://github.com/${{ github.repository }}/releases/download/v${VERSION}/ariaj_${VERSION}_Windows_x86_64.zip) |\n| Windows | ARM64 | [Download](https://github.com/${{ github.repository }}/releases/download/v${VERSION}/ariaj_${VERSION}_Windows_arm64.zip) |\n| Linux | x64 | [Download](https://github.com/${{ github.repository }}/releases/download/v${VERSION}/ariaj_${VERSION}_Linux_x86_64.tar.gz) |\n| Linux | ARM64 | [Download](https://github.com/${{ github.repository }}/releases/download/v${VERSION}/ariaj_${VERSION}_Linux_arm64.tar.gz) |\n| macOS | x64 | [Download](https://github.com/${{ github.repository }}/releases/download/v${VERSION}/ariaj_${VERSION}_Darwin_x86_64.tar.gz) |\n| macOS | ARM64 | [Download](https://github.com/${{ github.repository }}/releases/download/v${VERSION}/ariaj_${VERSION}_Darwin_arm64.tar.gz) |\n\n[View all releases](https://github.com/${{ github.repository }}/releases)\n\n### Manual Installation" README.md
+
+      - name: Commit and push if changed
+        run: |
+          git diff --quiet || (
+            git config --global user.name 'GitHub Actions'
+            git config --global user.email 'actions@github.com'
+            git add README.md
+            git commit -m "docs: update download links for ${GITHUB_REF#refs/tags/}"
+            git push
+          )
