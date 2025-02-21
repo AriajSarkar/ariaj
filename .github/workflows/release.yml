@@ -16,6 +16,16 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Set up Go cache
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.cache/go-build
+            ~/go/pkg/mod
+          key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
+          restore-keys: |
+            ${{ runner.os }}-go-
+
       - name: Fix tag
         run: |
           git config --global user.name 'GitHub Actions'
@@ -34,6 +44,15 @@ jobs:
       - uses: actions/setup-go@v4
         with:
           go-version: '1.21'
+          cache: true
+
+      - name: Cache Build
+        uses: actions/cache@v3
+        with:
+          path: tmp
+          key: ${{ runner.os }}-build-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-build-
 
       - name: Build and Test
         shell: bash
