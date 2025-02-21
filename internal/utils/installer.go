@@ -13,7 +13,7 @@ func getInstallPath() (string, error) {
 	switch runtime.GOOS {
 	case "windows":
 		// First try Program Files, fallback to AppData
-		destPath := filepath.Join("C:", "Program Files", "ariaj")
+		destPath := filepath.Join("C:\\", "Program Files", "ariaj")
 		if err := os.MkdirAll(destPath, 0755); err != nil {
 			destPath = filepath.Join(os.Getenv("USERPROFILE"), "AppData", "Local", "ariaj")
 		}
@@ -126,25 +126,5 @@ func Install() error {
 	if runtime.GOOS != "windows" {
 		fmt.Println("Please restart your terminal or source your shell configuration file")
 	}
-	return nil
-}
-
-func Uninstall() error {
-	destPath, err := getInstallPath()
-	if err != nil {
-		return err
-	}
-
-	binName := "ariaj"
-	if runtime.GOOS == "windows" {
-		binName = "ariaj.exe"
-	}
-
-	destFile := filepath.Join(destPath, binName)
-	if err := os.Remove(destFile); err != nil && !os.IsNotExist(err) {
-		return fmt.Errorf("failed to remove executable: %v", err)
-	}
-
-	fmt.Println("Ariaj has been uninstalled successfully")
 	return nil
 }
